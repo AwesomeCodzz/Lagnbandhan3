@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lagnbandhan Matrimony</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="src/css/main.css" />
+  </head>
+  <body>
+    <!-- Language Toggle Button -->
+    <div class="language-toggle">
+      <button id="langToggle" class="lang-btn">
+        <span id="langText">मराठी</span>
+      </button>
+    </div>
+
+    <main class="main-container">
+      <section class="welcome-section">
+        <div class="welcome-content">
+          <!-- Hero Image -->
+          <div class="hero-image">
+            <img
+              src="assets/images/weddingclipart.png"
+              alt="Maharashtrian wedding illustration"
+            />
+          </div>
+
+          <!-- Welcome Texts -->
+          <div class="welcome-text">
+            <h1 id="welcomeTitle">Welcome to Lagnbandhan Matrimony</h1>
+            <h2 id="welcomeSubtitle">
+              Maharashtra's Premier Matrimonial Platform
+            </h2>
+            <p id="welcomeDescription">
+              Where Authentic Connections Meet Cultural Values<br />Bringing
+              Together Hearts from Every Corner of Maharashtra
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+              <button id="createBiodataBtn" class="btn btn-primary">
+                <span id="createBiodataText">Create my biodata</span>
+              </button>
+              <button id="sendBiodataBtn" class="btn btn-secondary">
+                <span id="sendBiodataText"
+                  >I already have biodata, want to send</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+      <div class="loading-content">
+        <div class="spinner"></div>
+        <p id="loadingText">Please wait...</p>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script defer src="src/js/utils.js"></script>
+    <script defer src="src/js/language.js"></script>
+    <script defer src="src/js/biodata.js"></script>
+    <script defer src="src/js/main.js"></script>
+  </body>
+</html>
