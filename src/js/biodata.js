@@ -89,7 +89,7 @@ class BiodataManager {
                             </button>
                             <button class="gender-btn female-btn" data-gender="female">
                                 <div class="gender-image">
-                                    <img src="assets/images/indiaBride.png" alt="Indian Bride" />
+                                    <img src="assets/images/indianBride.png" alt="Indian Bride" />
                                 </div>
                                 <span class="gender-label" data-translate="bride">Bride</span>
                             </button>
