@@ -73,19 +73,27 @@ class BiodataManager {
     createGenderSelectionModal() {
         const modalHTML = `
             <div id="genderModal" class="modal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h2 data-translate="profileFor">Creating matrimony profile for:</h2>
-                    
-                    <div class="gender-options">
-                        <button class="gender-btn male-btn" data-gender="male">
-                            <span class="emoji">🤵‍♂️</span>
-                            <span data-translate="groom">Groom</span>
-                        </button>
-                        <button class="gender-btn female-btn" data-gender="female">
-                            <span class="emoji">👰‍♀️</span>
-                            <span data-translate="bride">Bride</span>
-                        </button>
+                <div class="modal-content gender-modal-content">
+                    <div class="modal-header-enhanced">
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body-enhanced">
+                        <h2 data-translate="profileFor">Creating matrimony profile for:</h2>
+                        
+                        <div class="gender-options">
+                            <button class="gender-btn male-btn" data-gender="male">
+                                <div class="gender-image">
+                                    <img src="assets/images/indianGroom.png" alt="Indian Groom" />
+                                </div>
+                                <span class="gender-label" data-translate="groom">Groom</span>
+                            </button>
+                            <button class="gender-btn female-btn" data-gender="female">
+                                <div class="gender-image">
+                                    <img src="assets/images/indiaBride.png" alt="Indian Bride" />
+                                </div>
+                                <span class="gender-label" data-translate="bride">Bride</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,56 +141,60 @@ class BiodataManager {
         const modalHTML = `
             <div id="casteModal" class="modal">
                 <div class="modal-content caste-content">
-                    <span class="close">&times;</span>
-                    <div class="modal-header">
+                    <div class="modal-header-enhanced">
                         <button class="back-btn" id="backToGender">
                             <i class="fas fa-arrow-left"></i>
-                                                         <span data-translate="back">Back</span>
+                            <span data-translate="back">Back</span>
                         </button>
-                                                 <h2 data-translate="selectCaste">Select Caste</h2>
-                     </div>
-                     <p data-translate="selectCasteDesc">Please select your caste/community</p>
-                    
-                    <div class="caste-grid">
-                                                 <button class="caste-btn" data-caste="maratha">
-                             <span data-translate="maratha">Maratha</span>
-                         </button>
-                         <button class="caste-btn" data-caste="koli">
-                             <span data-translate="koli">Koli</span>
-                         </button>
-                         <button class="caste-btn" data-caste="teli">
-                             <span data-translate="teli">Teli</span>
-                         </button>
-                         <button class="caste-btn" data-caste="wani">
-                             <span data-translate="wani">Wani</span>
-                         </button>
-                         <button class="caste-btn" data-caste="vanjari">
-                             <span data-translate="vanjari">Vanjari</span>
-                         </button>
-                         <button class="caste-btn" data-caste="mali">
-                             <span data-translate="mali">Mali</span>
-                         </button>
-                         <button class="caste-btn" data-caste="sonar">
-                             <span data-translate="sonar">Sonar</span>
-                         </button>
-                         <button class="caste-btn" data-caste="shimpi">
-                             <span data-translate="shimpi">Shimpi</span>
-                         </button>
-                         <button class="caste-btn" data-caste="jain">
-                             <span data-translate="jain">Jain</span>
-                         </button>
-                         <button class="caste-btn" data-caste="pardeshi">
-                             <span data-translate="pardeshi">Pardeshi</span>
-                         </button>
-                         <button class="caste-btn" data-caste="kumbhar">
-                             <span data-translate="kumbhar">Kumbhar</span>
-                         </button>
-                         <button class="caste-btn" data-caste="rajput">
-                             <span data-translate="rajput">Rajput</span>
-                         </button>
-                         <button class="caste-btn" data-caste="leva_patil">
-                             <span data-translate="levaPatil">Leva Patil</span>
-                         </button>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body-enhanced">
+                        <div class="caste-header">
+                            <h2 data-translate="selectCaste">Select Caste</h2>
+                            <p data-translate="selectCasteDesc">Please select your caste/community</p>
+                        </div>
+                        
+                        <div class="caste-grid">
+                            <button class="caste-btn" data-caste="maratha">
+                                <span data-translate="maratha">Maratha</span>
+                            </button>
+                            <button class="caste-btn" data-caste="koli">
+                                <span data-translate="koli">Koli</span>
+                            </button>
+                            <button class="caste-btn" data-caste="teli">
+                                <span data-translate="teli">Teli</span>
+                            </button>
+                            <button class="caste-btn" data-caste="wani">
+                                <span data-translate="wani">Wani</span>
+                            </button>
+                            <button class="caste-btn" data-caste="vanjari">
+                                <span data-translate="vanjari">Vanjari</span>
+                            </button>
+                            <button class="caste-btn" data-caste="mali">
+                                <span data-translate="mali">Mali</span>
+                            </button>
+                            <button class="caste-btn" data-caste="sonar">
+                                <span data-translate="sonar">Sonar</span>
+                            </button>
+                            <button class="caste-btn" data-caste="shimpi">
+                                <span data-translate="shimpi">Shimpi</span>
+                            </button>
+                            <button class="caste-btn" data-caste="jain">
+                                <span data-translate="jain">Jain</span>
+                            </button>
+                            <button class="caste-btn" data-caste="pardeshi">
+                                <span data-translate="pardeshi">Pardeshi</span>
+                            </button>
+                            <button class="caste-btn" data-caste="kumbhar">
+                                <span data-translate="kumbhar">Kumbhar</span>
+                            </button>
+                            <button class="caste-btn" data-caste="rajput">
+                                <span data-translate="rajput">Rajput</span>
+                            </button>
+                            <button class="caste-btn" data-caste="leva_patil">
+                                <span data-translate="levaPatil">Leva Patil</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
