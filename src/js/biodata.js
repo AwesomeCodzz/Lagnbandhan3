@@ -103,7 +103,9 @@ class BiodataManager {
             <div id="genderModal" class="modal">
                 <div class="modal-content gender-modal-content">
                     <div class="modal-header-enhanced">
-                        <span class="close">&times;</span>
+                      <span class="close" 
+                      style="font-size:2rem; position:absolute; left:0; right:0; top:0.5rem; margin:0 auto; cursor:pointer; z-index:10; width:fit-content; text-align:center;"
+                      aria-label="Close Gender Selection modal">&times;</span>
                     </div>
                     <div class="modal-body-enhanced">
                         <h2 data-translate="profileFor">Creating matrimony profile for:</h2>
