@@ -3,23 +3,69 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us | Lagn Ek Pavitra Bandhan Matrimony</title>
+    <title>About Us | Lagn Ek Pavitra Bandhan</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Main CSS -->
     <link rel="stylesheet" href="src/css/main.css" />
+    <style>
+      .info-section {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .info-section h1 {
+        color: var(--primary-orange);
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      .info-section p {
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+      .info-section ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      .info-section ul li {
+        padding: 0.5rem 0;
+        line-height: 1.6;
+      }
+    </style>
   </head>
   <body>
-    <!-- Header copied exactly as implemented in index.html -->
-    <!-- ... HEADER CODE HERE ... -->
-
     <main class="main-container">
       <section class="info-section">
-        <h1 data-translate="navAbout">About Us</h1>
-        <p>
-          Welcome to Lagn Ek Pavitra Bandhan Matrimony.<br />
-          This is a placeholder About Us page. Add your business/story details
-          here.
-        </p>
+        <h1 data-translate="aboutHeading">About Us</h1>
+        <div data-translate="aboutContent"></div>
       </section>
     </main>
-    <script src="src/js/main.js"></script>
+
+    <!-- Load language manager -->
+    <script src="src/js/utils.js"></script>
+    <script src="src/js/language.js"></script>
+    <script>
+      // Initialize language manager for static page
+      document.addEventListener("DOMContentLoaded", async function () {
+        try {
+          const langManager = new LanguageManager();
+          await langManager.init();
+          console.log(
+            "✅ About page loaded with language:",
+            langManager.currentLanguage
+          );
+        } catch (error) {
+          console.error("Error initializing language:", error);
+        }
+      });
+    </script>
   </body>
 </html>
