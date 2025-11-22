@@ -259,29 +259,42 @@ class BiodataManager {
     });
   }
 
+  // WhatsApp Modal
   createWhatsAppModal() {
     const modalHTML = `
-        <div id="whatsappModal" class="modal">
-            <div class="modal-content" style="padding: 1rem 1rem; text-align: center; position: relative;">
-                <span class="close" 
-                      style="font-size: 2rem; position: middle; top: 0.5rem; right: 1rem; cursor: pointer; z-index: 10;"
-                      aria-label="Close WhatsApp share modal">&times;</span>
-                <h2 data-translate="shareBiodataWhatsappTitle" 
-                    style="margin: 2rem 0 2rem 0; font-weight: 600; font-size: 1.5rem;"></h2>
-                <img src="assets/images/whatsapplogo.png" alt="WhatsApp" 
-                     style="width: 90px; height: 90px; display: block; margin: 2rem auto 0 auto;" />
-            </div>
-        </div>
-    `;
+    <div id="whatsappModal" class="modal">
+      <div class="modal-content" style="padding: 1rem 1rem; text-align: center; position: relative;">
+        <span class="close" style="font-size: 2rem; position: middle; top: 0.5rem; right: 1rem; cursor: pointer; z-index: 10;" aria-label="Close WhatsApp share modal">&times;</span>
+        <h2 data-translate="shareBiodataWhatsappTitle" style="margin: 2rem 0 2rem 0; font-weight: 600; font-size: 1.5rem;"></h2>
+        <img id="whatsappLogoBtn" src="assets/images/whatsapplogo.png" alt="WhatsApp" style="width: 90px; height: 90px; display: block; margin: 2rem auto 0 auto; cursor: pointer; transition: transform 0.2s;">
+      </div>
+    </div>
+  `;
 
     document.body.insertAdjacentHTML("beforeend", modalHTML);
+
+    // WhatsApp logo click handler - opens WhatsApp with business number
+    const whatsappLogo = document.getElementById("whatsappLogoBtn");
+    whatsappLogo.addEventListener("click", () => {
+      this.openWhatsAppChat();
+    });
+
+    // Add hover effect
+    whatsappLogo.addEventListener("mouseenter", () => {
+      whatsappLogo.style.transform = "scale(1.1)";
+    });
+    whatsappLogo.addEventListener("mouseleave", () => {
+      whatsappLogo.style.transform = "scale(1)";
+    });
 
     // Close modal functionality
     const whatsappModal = document.getElementById("whatsappModal");
     const closeBtn = whatsappModal.querySelector(".close");
     closeBtn.addEventListener("click", () => this.hideWhatsAppModal());
     whatsappModal.addEventListener("click", (e) => {
-      if (e.target === whatsappModal) this.hideWhatsAppModal();
+      if (e.target === whatsappModal) {
+        this.hideWhatsAppModal();
+      }
     });
   }
 
@@ -470,6 +483,27 @@ class BiodataManager {
   hideWhatsAppModal() {
     const modal = document.getElementById("whatsappModal");
     modal.classList.remove("show");
+  }
+
+  // WhatsApp Chat Method
+  openWhatsAppChat() {
+    // Your WhatsApp business number
+    const businessNumber = "919270969478"; // Format: country code + number (no spaces, no +)
+
+    // Pre-filled message for users (optional - you can customize or remove)
+    const message =
+      "Hello, I would like to send my biodata for matrimony registration.";
+
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, "_blank");
+
+    // Close the modal after opening WhatsApp
+    this.hideWhatsAppModal();
   }
 
   sendWhatsAppMessage() {
