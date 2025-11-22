@@ -11,6 +11,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- Main CSS -->
     <link rel="stylesheet" href="src/css/main.css" />
     <style>
@@ -21,6 +26,37 @@
         background: white;
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+      .page-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1.25rem;
+        background: var(--gray-light);
+        border: 2px solid var(--gray-dark);
+        border-radius: var(--radius-lg);
+        color: var(--text-dark);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        font-weight: 500;
+        text-decoration: none;
+        margin-bottom: 1.5rem;
+      }
+      .page-back-btn:hover {
+        background: var(--primary-orange);
+        border-color: var(--primary-orange);
+        color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+      .page-back-btn i {
+        font-size: 1rem;
+        transition: transform 0.3s ease;
+      }
+      .page-back-btn:hover i {
+        transform: translateX(-2px);
       }
       .info-section h1 {
         color: var(--primary-orange);
@@ -44,6 +80,10 @@
   <body>
     <main class="main-container">
       <section class="info-section">
+        <a href="index.html" class="page-back-btn">
+          <i class="fas fa-arrow-left"></i>
+          <span data-translate="back">Back</span>
+        </a>
         <h1 data-translate="aboutHeading">About Us</h1>
         <div data-translate="aboutContent"></div>
       </section>
