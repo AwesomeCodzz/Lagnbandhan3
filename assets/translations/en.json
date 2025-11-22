@@ -42,5 +42,9 @@
   "levaPatilText": "Leva Patil",
   "shareBiodataWhatsappTitle": "Share Biodata on WhatsApp",
   "loadingText": "Please wait...",
-  "langText": "मराठी"
+  "langText": "मराठी",
+  "navHome": "Home",
+  "navAbout": "About Us",
+  "navContact": "Contact Us",
+  "navFAQ": "FAQ"
 }

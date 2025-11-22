@@ -23,12 +23,43 @@
     <link rel="stylesheet" href="src/css/main.css" />
   </head>
   <body>
-    <!-- Language Toggle Button -->
-    <div class="language-toggle">
-      <button id="langToggle" class="lang-btn">
-        <span id="langText">मराठी</span>
-      </button>
-    </div>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-left">
+        <a href="index.html" class="logo-link">
+          <img
+            src="assets/images/LagnEkPavitraBandhanLogo.png"
+            alt="Lagn Ek Pavitra Bandhan"
+            class="main-logo"
+          />
+        </a>
+      </div>
+      <nav class="site-nav">
+        <ul id="mainNav">
+          <li><a href="index.html" data-translate="navHome">Home</a></li>
+          <li><a href="about.html" data-translate="navAbout">About Us</a></li>
+          <li>
+            <a href="contact.html" data-translate="navContact">Contact Us</a>
+          </li>
+          <li><a href="faq.html" data-translate="navFAQ">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <div class="language-toggle">
+          <!-- Your existing language toggle button here -->
+          <button id="langToggle" class="lang-btn">
+            <span id="langText"></span>
+          </button>
+        </div>
+        <button
+          class="mobile-nav-toggle"
+          id="mobileNavToggle"
+          aria-label="Menu"
+        >
+          <span class="hamburger"></span>
+        </button>
+      </div>
+    </header>
 
     <main class="main-container">
       <section class="welcome-section">

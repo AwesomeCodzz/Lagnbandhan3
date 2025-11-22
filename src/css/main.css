@@ -1400,3 +1400,123 @@ input:focus {
     margin-right: 0;
   }
 }
+
+/* ===== SITE HEADER ===== */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 2rem 0.7rem 1rem;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+}
+/* Push navigation menu to the right side */
+.site-nav {
+  margin-left: auto;
+  margin-right: 6rem;
+}
+.header-left .main-logo {
+  width: 120px;
+  height: auto;
+}
+.site-nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav a {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 1.06rem;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.21s;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius-md);
+}
+.site-nav a:hover {
+  color: var(--primary-orange);
+  background: var(--gray-light);
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.language-toggle {
+  position: static !important;
+  margin-right: 0.5rem;
+}
+.mobile-nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: none;
+}
+.mobile-nav-toggle .hamburger,
+.mobile-nav-toggle .hamburger:before,
+.mobile-nav-toggle .hamburger:after {
+  content: "";
+  display: block;
+  background: var(--text-dark);
+  height: 3px;
+  width: 30px;
+  position: relative;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+.mobile-nav-toggle .hamburger:before {
+  transform: translateY(-9px);
+}
+.mobile-nav-toggle .hamburger:after {
+  transform: translateY(6px);
+}
+@media (max-width: 950px) {
+  .site-header {
+    padding-right: 1rem;
+  }
+  .site-nav ul {
+    gap: 0.7rem;
+  }
+}
+@media (max-width: 768px) {
+  .site-header {
+    flex-wrap: wrap;
+    padding: 0.6rem 0.5rem;
+  }
+  .site-nav {
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background: #ffffff;
+    width: 210px;
+    box-shadow: 0 10px 36px 0 rgba(0, 0, 0, 0.14);
+    border-bottom-left-radius: 1em;
+    display: none;
+  }
+  .site-nav.open {
+    display: block;
+    z-index: 1400;
+  }
+  .site-nav ul {
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    padding: 1.3rem 0.5rem;
+  }
+  .header-right {
+    flex-direction: row-reverse;
+    width: auto;
+    gap: 0.25rem;
+  }
+  .mobile-nav-toggle {
+    display: block;
+    margin-left: 0.6rem;
+  }
+}
