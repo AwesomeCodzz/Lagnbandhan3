@@ -491,8 +491,7 @@ class BiodataManager {
     const businessNumber = "919270969478"; // Format: country code + number (no spaces, no +)
 
     // Pre-filled message for users (optional - you can customize or remove)
-    const message =
-      "Hello, I would like to send my biodata for matrimony registration.";
+    const message = "नमस्कार, विवाह नोंदणीसाठी मी बायोडेटा पाठवत आहे.";
 
     // Create WhatsApp URL
     const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodeURIComponent(
