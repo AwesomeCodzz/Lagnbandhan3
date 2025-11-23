@@ -38,6 +38,8 @@ class BiodataManager {
         "https://docs.google.com/forms/d/e/1FAIpQLSc6OCPjuwUBD1mU71Ll3FlAohgPfFkkazCND3UDJU17lniqbQ/viewform?usp=dialog",
       leva_patil_male:
         "https://docs.google.com/forms/d/e/1FAIpQLSds8h33wOhI2HUnSQXiCuaD2QajASs4xE8wbzMOF4xQ7hJUzw/viewform?usp=dialog",
+      other_male:
+        "https://docs.google.com/forms/d/e/1FAIpQLSd-RmeeKJH30LxIbbSQ7G1wm8_0kp3ulUFnbMIdjK_8PBbqaA/viewform?usp=sharing&ouid=110964175528750472870",
 
       // Female Forms
       maratha_female:
@@ -66,6 +68,8 @@ class BiodataManager {
         "https://docs.google.com/forms/d/e/1FAIpQLSce9R30flMNF9qKgXlyavFScGYUOatDOMZYt1RogFMVljpAfg/viewform?usp=dialog",
       leva_patil_female:
         "https://docs.google.com/forms/d/e/1FAIpQLScFIIoh-lHL0x2KALBQcJGTqhe4gFD-CD3Sun8GbvCusr20XA/viewform?usp=dialog",
+      other_female:
+        "https://docs.google.com/forms/d/e/1FAIpQLSc0IoS0iXO2MWnVdVlfv350v6poJfC3Xjt6pWANiz7eUFFx-A/viewform?usp=sharing&ouid=110964175528750472870",
     };
 
     this.init();
@@ -223,6 +227,9 @@ class BiodataManager {
                             </button>
                             <button class="caste-btn" data-caste="leva_patil">
                                 <span data-translate="levaPatil">Leva Patil</span>
+                            </button>
+                            <button class="caste-btn" data-caste="other">
+                                <span data-translate="other">Other</span>
                             </button>
                         </div>
                     </div>
