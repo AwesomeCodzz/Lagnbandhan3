@@ -207,7 +207,6 @@ class LanguageManager {
       return;
     }
 
-    // If not ready yet, store the pending change
     if (!this.isReady) {
       console.log("⏳ Not ready yet, storing pending change");
       this.pendingLanguageChange = lang;
@@ -222,14 +221,47 @@ class LanguageManager {
     document.documentElement.lang = lang;
     console.log(`📄 Updated HTML lang attribute to: ${lang}`);
 
+    // ✅ NEW: Add CSS class for global Marathi rendering
+    if (lang === "mr") {
+      document.documentElement.classList.add("language-marathi");
+      document.documentElement.classList.remove("language-english");
+      console.log("🎨 Added language-marathi class to <html>");
+    } else {
+      document.documentElement.classList.remove("language-marathi");
+      document.documentElement.classList.add("language-english");
+      console.log("🎨 Added language-english class to <html>");
+    }
+
+    // Apply lang attribute to body and all text elements
+    document.body.setAttribute("lang", lang);
+    const allTextElements = document.querySelectorAll(
+      "h1, h2, h3, h4, h5, h6, p, span, div, button, a, label, li, td, th"
+    );
+    allTextElements.forEach((el) => {
+      if (lang === "mr") {
+        el.setAttribute("lang", "mr");
+      } else {
+        el.removeAttribute("lang");
+      }
+    });
+    console.log(
+      `📄 Applied lang="${lang}" to ${allTextElements.length} text elements`
+    );
+
     // Update font family for Marathi
     if (lang === "mr") {
       document.body.style.fontFamily =
         "'Noto Sans Devanagari', 'Inter', sans-serif";
-      console.log("🔤 Applied Marathi font family");
+      // ✅ NEW: Apply font-feature-settings inline to ensure it applies
+      document.body.style.fontFeatureSettings = '"liga" 0, "dlig" 0';
+      document.body.style.fontVariantLigatures = "no-common-ligatures";
+      console.log("🔤 Applied Marathi font family with ligature settings");
     } else {
       document.body.style.fontFamily =
         "'Inter', 'Noto Sans Devanagari', sans-serif";
+      // ✅ NEW: Reset font-feature-settings for English
+      document.body.style.fontFeatureSettings = "normal";
+      document.body.style.fontVariantLigatures = "normal";
       console.log("🔤 Applied English font family");
     }
 
@@ -305,6 +337,14 @@ class LanguageManager {
         console.log(
           `✅ Updated #${key}: "${oldText}" → "${translations[key]}"`
         );
+
+        // Set lang attribute for Marathi rendering
+        if (this.currentLanguage === "mr") {
+          element.setAttribute("lang", "mr");
+        } else {
+          element.removeAttribute("lang");
+        }
+
         updatedCount++;
       } else {
         missingElements.push(key);
@@ -415,6 +455,12 @@ class LanguageManager {
           element.innerHTML = translations[key];
         } else {
           element.textContent = translations[key];
+        }
+        // Set lang attribute for Marathi rendering
+        if (this.currentLanguage === "mr") {
+          element.setAttribute("lang", "mr");
+        } else {
+          element.removeAttribute("lang");
         }
       }
     });

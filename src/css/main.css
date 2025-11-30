@@ -18,6 +18,9 @@ body {
   background: linear-gradient(135deg, #fff5f0 0%, #fef7f0 100%);
   min-height: 100vh;
   overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ===== CSS CUSTOM PROPERTIES (COLORS) ===== */
@@ -53,6 +56,30 @@ body {
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
+}
+
+/* ===== MARATHI TEXT RENDERING (DEVANAGARI SCRIPT) ===== */
+
+/* Global Marathi rendering - applies to entire document when Marathi is active */
+html.language-marathi,
+html.language-marathi * {
+  font-feature-settings: "liga" 0, "dlig" 0 !important;
+  font-variant-ligatures: no-common-ligatures !important;
+  text-rendering: optimizeLegibility;
+}
+
+html.language-marathi body {
+  font-family: "Noto Sans Devanagari", "Inter", sans-serif !important;
+}
+
+/* Fallback for individual elements with lang attribute */
+[lang="mr"],
+.marathi-text,
+.language-mr {
+  font-family: "Noto Sans Devanagari", "Inter", sans-serif !important;
+  font-feature-settings: "liga" 0, "dlig" 0 !important;
+  font-variant-ligatures: no-common-ligatures !important;
+  text-rendering: optimizeLegibility;
 }
 
 /* ===== UTILITY CLASSES ===== */
