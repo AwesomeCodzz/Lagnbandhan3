@@ -251,10 +251,10 @@ class LanguageManager {
     // Update font family for Marathi
     if (lang === "mr") {
       document.body.style.fontFamily =
-        "'Noto Sans Devanagari', 'Inter', sans-serif";
+        "'Tiro Devanagari Marathi', 'Noto Sans Devanagari', 'Inter', sans-serif";
       // ✅ NEW: Apply font-feature-settings inline to ensure it applies
-      document.body.style.fontFeatureSettings = '"liga" 0, "dlig" 0';
-      document.body.style.fontVariantLigatures = "no-common-ligatures";
+      document.body.style.fontFeatureSettings = '"liga" 1, "dlig" 1';
+      document.body.style.fontVariantLigatures = "normal";
       console.log("🔤 Applied Marathi font family with ligature settings");
     } else {
       document.body.style.fontFamily =

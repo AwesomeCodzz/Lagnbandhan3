@@ -63,22 +63,24 @@ body {
 /* Global Marathi rendering - applies to entire document when Marathi is active */
 html.language-marathi,
 html.language-marathi * {
-  font-feature-settings: "liga" 0, "dlig" 0 !important;
-  font-variant-ligatures: no-common-ligatures !important;
+  font-feature-settings: "liga" 1, "dlig" 1 !important; /* Changed 0 to 1 */
+  font-variant-ligatures: normal !important; /* Changed to normal */
   text-rendering: optimizeLegibility;
 }
 
 html.language-marathi body {
-  font-family: "Noto Sans Devanagari", "Inter", sans-serif !important;
+  font-family: "Tiro Devanagari Marathi", "Noto Sans Devanagari", "Inter",
+    sans-serif !important;
 }
 
 /* Fallback for individual elements with lang attribute */
 [lang="mr"],
 .marathi-text,
 .language-mr {
-  font-family: "Noto Sans Devanagari", "Inter", sans-serif !important;
-  font-feature-settings: "liga" 0, "dlig" 0 !important;
-  font-variant-ligatures: no-common-ligatures !important;
+  font-family: "Tiro Devanagari Marathi", "Noto Sans Devanagari", "Inter",
+    sans-serif !important;
+  font-feature-settings: "liga" 1, "dlig" 1 !important;
+  font-variant-ligatures: normal !important;
   text-rendering: optimizeLegibility;
 }
 
