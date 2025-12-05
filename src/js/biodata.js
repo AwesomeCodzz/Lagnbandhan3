@@ -272,7 +272,7 @@ class BiodataManager {
     <div id="whatsappModal" class="modal">
       <div class="modal-content" style="padding: 1rem 1rem; text-align: center; position: relative;">
         <span class="close" style="font-size: 2rem; position: middle; top: 0.5rem; right: 1rem; cursor: pointer; z-index: 10;" aria-label="Close WhatsApp share modal">&times;</span>
-        <h2 data-translate="shareBiodataWhatsappTitle" style="margin: 2rem 0 2rem 0; font-weight: 600; font-size: 1.5rem;"></h2>
+        <h2 data-translate="shareBiodataWhatsappTitle" class="font-noto-override" style="margin: 2rem 0 2rem 0; font-weight: 600; font-size: 1.5rem;"></h2>
         <img id="whatsappLogoBtn" src="assets/images/whatsapplogo.png" alt="WhatsApp" style="width: 90px; height: 90px; display: block; margin: 2rem auto 0 auto; cursor: pointer; transition: transform 0.2s;">
       </div>
     </div>

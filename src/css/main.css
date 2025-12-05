@@ -1549,3 +1549,8 @@ input:focus {
     margin-left: 0.6rem;
   }
 }
+
+/* Force Noto Sans Devanagari for specific sections */
+.font-noto-override {
+  font-family: "Noto Sans Devanagari", "Inter", sans-serif !important;
+}
