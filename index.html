@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="mr" class="language-marathi">
   <head>
     <!-- Google tag (gtag.js) Google analytics script -->
     <script
@@ -65,15 +65,13 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Keep Noto for body text (Modern look) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Tiro+Devanagari+Marathi:ital@0;1&display=swap"
     />
-
-    <!-- Add Tiro for  Headings (Better rendering for 'Matrimony' word) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Tiro+Devanagari+Marathi:ital@0;1&display=swap"
       rel="stylesheet"
     />
 
@@ -103,6 +101,8 @@
             src="assets/images/LagnEkPavitraBandhanLogo.png"
             alt="Lagn Ek Pavitra Bandhan"
             class="main-logo"
+            width="120"
+            height="50"
           />
         </a>
       </div>
@@ -141,6 +141,9 @@
             <img
               src="assets/images/weddingclipart.png"
               alt="Maharashtrian wedding illustration"
+              width="600"
+              height="500"
+              fetchpriority="high"
             />
           </div>
 
@@ -182,9 +185,9 @@
     </div>
 
     <!-- Scripts -->
-    <script defer src="src/js/utils.js"></script>
-    <script defer src="src/js/language.js"></script>
-    <script defer src="src/js/biodata.js"></script>
-    <script defer src="src/js/main.js"></script>
+    <script defer src="src/js/utils.js?v=2.0"></script>
+    <script defer src="src/js/language.js?v=2.0"></script>
+    <script defer src="src/js/biodata.js?v=2.0"></script>
+    <script defer src="src/js/main.js?v=2.0"></script>
   </body>
 </html>

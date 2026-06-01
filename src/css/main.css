@@ -20,8 +20,8 @@ body {
     Roboto,
     sans-serif;
   line-height: 1.6;
-  color: #2d3748;
-  background: linear-gradient(135deg, #fff5f0 0%, #fef7f0 100%);
+  color: #2e3651;
+  background: linear-gradient(135deg, #fffcf9 0%, #fcf5ee 100%);
   min-height: 100vh;
   overflow-x: hidden;
 
@@ -32,11 +32,11 @@ body {
 /* ===== CSS CUSTOM PROPERTIES (COLORS) ===== */
 :root {
   /* Traditional Indian Colors */
-  --primary-orange: #9a3b22;
-  --primary-saffron: #dd5d0d;
-  --secondary-gold: #ffd700;
-  --accent-red: #dc2626;
-  --warm-orange: #fb923c;
+  --primary-orange: #8c1c22;
+  --primary-saffron: #a8242a;
+  --secondary-gold: #e5a93b;
+  --accent-red: #bd2a2a;
+  --warm-orange: #f3ba4b;
 
   /* Neutral Colors */
   --text-dark: #2e3651;
@@ -149,11 +149,13 @@ html.language-marathi body {
 }
 
 .welcome-content {
-  background: linear-gradient(135deg, #fff5f0 0%, #fef7f0 100%);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-xl);
-  padding: 2rem;
-  box-shadow: var(--shadow-xl);
-  border: 1px solid var(--gray-dark);
+  padding: 3rem;
+  box-shadow: 0 20px 50px rgba(140, 28, 34, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 /* ===== HERO IMAGE ===== */
@@ -260,13 +262,14 @@ html.language-marathi body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(140, 28, 34, 0.15);
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 2000;
   padding: 1rem;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .modal.show {
@@ -274,15 +277,17 @@ html.language-marathi body {
 }
 
 .modal-content {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: var(--radius-xl);
   padding: 0;
   max-width: 400px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: var(--shadow-xl);
-  border: 1px solid var(--gray-dark);
+  box-shadow: 0 30px 60px rgba(140, 28, 34, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .modal-header {
@@ -571,7 +576,7 @@ html.language-marathi body {
     justify-content: space-between;
     height: 100vh;
     padding: 0 4rem;
-    background: linear-gradient(135deg, #fff5f0 0%, #fef7f0 100%);
+    background: linear-gradient(135deg, #fffcf9 0%, #fcf5ee 100%);
     border-radius: 0;
     box-shadow: none;
     border: none;
@@ -735,25 +740,26 @@ input:focus {
 }
 
 .btn-whatsapp {
-  background: linear-gradient(135deg, #25d366, #075e54);
+  background: linear-gradient(135deg, #25d366, #128c7e);
   color: var(--white);
   border: none;
-  padding: 1rem 2rem;
+  padding: 1rem 2.25rem;
   border-radius: var(--radius-lg);
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  gap: 0.75rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-whatsapp:hover {
-  background: linear-gradient(135deg, #20ba5a, #064e45);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
 }
 
 #whatsappNumber {
@@ -842,12 +848,14 @@ input:focus {
   gap: 1.5rem;
   padding: 2.5rem 2rem;
   min-width: 200px;
-  border: 3px solid var(--gray-dark);
+  border: 1px solid rgba(229, 169, 59, 0.3);
   border-radius: 1.5rem;
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--text-dark);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   font-size: 1.1rem;
   font-weight: 600;
   position: relative;
@@ -855,8 +863,8 @@ input:focus {
 }
 
 .gender-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(140, 28, 34, 0.08);
 }
 
 .gender-btn:active {
@@ -990,6 +998,45 @@ input:focus {
   font-size: 1.1rem;
   color: var(--text-medium);
   line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.caste-search-wrapper {
+  margin: 0 1rem 1.5rem 1rem;
+  position: relative;
+}
+
+.caste-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 2px solid var(--gray-dark);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  color: var(--text-dark);
+  font-family: inherit;
+}
+
+.caste-search-input:focus {
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px rgba(140, 28, 34, 0.1);
+}
+
+.caste-search-wrapper .search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  pointer-events: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.caste-search-input:focus + .search-icon {
+  color: var(--primary-orange);
 }
 
 .caste-grid {
@@ -1445,12 +1492,16 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.7rem 2rem 0.7rem 1rem;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  padding: 0.8rem 2rem 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(230, 230, 230, 0.5);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
   position: sticky;
   top: 0;
   z-index: 1100;
+  transition: all 0.3s ease;
 }
 /* Push navigation menu to the right side */
 .site-nav {

@@ -2,7 +2,7 @@
 
 class LanguageManager {
   constructor() {
-    this.currentLanguage = "en";
+    this.currentLanguage = "mr";
     this.translations = {};
     this.isReady = false;
     this.pendingLanguageChange = null;
@@ -14,7 +14,7 @@ class LanguageManager {
       console.log("🌐 Language manager starting initialization...");
 
       // Load saved language preference
-      const savedLang = storage.get("selectedLanguage") || "en";
+      const savedLang = storage.get("selectedLanguage") || "mr";
       console.log("📚 Loading translations...");
       await this.loadTranslations();
       console.log("✅ Translations loaded");
@@ -76,19 +76,24 @@ class LanguageManager {
 
   async loadTranslations() {
     try {
-      // Load English translations
-      const enResponse = await fetch("assets/translations/en.json");
-      this.translations.en = await enResponse.json();
+      // Try to load from localStorage cache first for instant load
+      const cachedEn = storage.get("cached_translations_en");
+      const cachedMr = storage.get("cached_translations_mr");
 
-      // Load Marathi translations
-      const mrResponse = await fetch("assets/translations/mr.json");
-      this.translations.mr = await mrResponse.json();
+      if (cachedEn && cachedMr) {
+        this.translations.en = cachedEn;
+        this.translations.mr = cachedMr;
+        console.log("🚀 Translations loaded instantly from localStorage cache");
 
-      console.log("Translations loaded:", {
-        english: Object.keys(this.translations.en).length,
-        marathi: Object.keys(this.translations.mr).length,
-      });
+        // Quietly revalidate in background
+        this.revalidateTranslations();
+        return;
+      }
+
+      // Fallback to fetch if not cached
+      await this.fetchAndCacheTranslations();
     } catch (error) {
+      console.error("Error loading translations:", error);
       console.error("Error loading translations:", error);
       // Fallback translations
       this.translations = {
@@ -139,6 +144,52 @@ class LanguageManager {
           loginPasswordLabel: "पासवर्ड",
         },
       };
+    }
+  }
+
+  async fetchAndCacheTranslations() {
+    const enResponse = await fetch("assets/translations/en.json?v=2.0");
+    const enData = await enResponse.json();
+    this.translations.en = enData;
+    storage.set("cached_translations_en", enData);
+
+    const mrResponse = await fetch("assets/translations/mr.json?v=2.0");
+    const mrData = await mrResponse.json();
+    this.translations.mr = mrData;
+    storage.set("cached_translations_mr", mrData);
+
+    console.log("Translations fetched and cached successfully", {
+      english: Object.keys(this.translations.en).length,
+      marathi: Object.keys(this.translations.mr).length,
+    });
+  }
+
+  async revalidateTranslations() {
+    try {
+      const [enRes, mrRes] = await Promise.all([
+        fetch("assets/translations/en.json?v=2.0"),
+        fetch("assets/translations/mr.json?v=2.0")
+      ]);
+      const [enData, mrData] = await Promise.all([
+        enRes.json(),
+        mrRes.json()
+      ]);
+
+      const enChanged = JSON.stringify(enData) !== JSON.stringify(this.translations.en);
+      const mrChanged = JSON.stringify(mrData) !== JSON.stringify(this.translations.mr);
+
+      if (enChanged || mrChanged) {
+        this.translations.en = enData;
+        this.translations.mr = mrData;
+        storage.set("cached_translations_en", enData);
+        storage.set("cached_translations_mr", mrData);
+        console.log("♻️ Cache revalidated and updated");
+
+        // Quietly refresh translations on page without reload
+        this.updateAllTranslations();
+      }
+    } catch (e) {
+      console.warn("Background translation revalidation failed:", e);
     }
   }
 

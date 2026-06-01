@@ -117,13 +117,13 @@ class BiodataManager {
                         <div class="gender-options">
                             <button class="gender-btn male-btn" data-gender="male">
                                 <div class="gender-image">
-                                    <img src="assets/images/indianGroom.png" alt="Indian Groom" />
+                                    <img src="assets/images/indianGroom.png" alt="Indian Groom" width="120" height="120" loading="lazy" />
                                 </div>
                                 <span class="gender-label" data-translate="groom">Groom</span>
                             </button>
                             <button class="gender-btn female-btn" data-gender="female">
                                 <div class="gender-image">
-                                    <img src="assets/images/indianBride.png" alt="Indian Bride" />
+                                    <img src="assets/images/indianBride.png" alt="Indian Bride" width="120" height="120" loading="lazy" />
                                 </div>
                                 <span class="gender-label" data-translate="bride">Bride</span>
                             </button>
@@ -187,6 +187,16 @@ class BiodataManager {
                             <h2 data-translate="selectCaste">Select Caste</h2>
                             <p data-translate="selectCasteDesc">Please select your caste/community</p>
                         </div>
+
+                        <div class="caste-search-wrapper">
+                            <input 
+                                type="text" 
+                                id="casteSearch" 
+                                class="caste-search-input"
+                                data-placeholder-key="casteSearchPlaceholder"
+                            />
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
                         
                         <div class="caste-grid">
                             <button class="caste-btn" data-caste="maratha">
@@ -247,6 +257,24 @@ class BiodataManager {
       });
     });
 
+    // Live Search Filter Logic
+    const casteSearch = document.getElementById("casteSearch");
+    if (casteSearch) {
+      casteSearch.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        casteBtns.forEach((btn) => {
+          const casteText = btn.textContent.toLowerCase();
+          const casteData = btn.dataset.caste.toLowerCase();
+          
+          if (casteText.includes(query) || casteData.includes(query)) {
+            btn.style.display = "";
+          } else {
+            btn.style.display = "none";
+          }
+        });
+      });
+    }
+
     // Close modal and back button functionality
     const casteModal = document.getElementById("casteModal");
     const closeBtn = document.querySelector("#casteModal .close");
@@ -273,7 +301,7 @@ class BiodataManager {
       <div class="modal-content" style="padding: 1rem 1rem; text-align: center; position: relative;">
         <span class="close" style="font-size: 2rem; position: middle; top: 0.5rem; right: 1rem; cursor: pointer; z-index: 10;" aria-label="Close WhatsApp share modal">&times;</span>
         <h2 data-translate="shareBiodataWhatsappTitle" class="font-noto-override" style="margin: 2rem 0 2rem 0; font-weight: 600; font-size: 1.5rem;"></h2>
-        <img id="whatsappLogoBtn" src="assets/images/whatsapplogo.png" alt="WhatsApp" style="width: 90px; height: 90px; display: block; margin: 2rem auto 0 auto; cursor: pointer; transition: transform 0.2s;">
+        <img id="whatsappLogoBtn" src="assets/images/whatsapplogo.png" alt="WhatsApp" width="90" height="90" loading="lazy" style="width: 90px; height: 90px; display: block; margin: 2rem auto 0 auto; cursor: pointer; transition: transform 0.2s;">
       </div>
     </div>
   `;
@@ -354,6 +382,17 @@ class BiodataManager {
   showCasteSelection() {
     const modal = document.getElementById("casteModal");
     modal.classList.add("show");
+
+    // Reset search input and show all caste buttons
+    const searchInput = document.getElementById("casteSearch");
+    if (searchInput) {
+      searchInput.value = "";
+    }
+    const casteBtns = document.querySelectorAll(".caste-btn");
+    casteBtns.forEach((btn) => {
+      btn.style.display = "";
+    });
+
     // Update translations when modal opens
     this.languageManager.updatePageTranslations();
   }
