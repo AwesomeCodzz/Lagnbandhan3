@@ -88,18 +88,11 @@ class BiodataManager {
         this.showGenderSelection()
       );
     }
-
-    // Send existing biodata button - shows WhatsApp modal
-    const sendBiodataBtn = document.getElementById("sendBiodataBtn");
-    if (sendBiodataBtn) {
-      sendBiodataBtn.addEventListener("click", () => this.showWhatsAppModal());
-    }
   }
 
   createModals() {
     this.createGenderSelectionModal();
     this.createCasteSelectionModal();
-    this.createWhatsAppModal();
   }
 
   createGenderSelectionModal() {
@@ -294,44 +287,7 @@ class BiodataManager {
     });
   }
 
-  // WhatsApp Modal
-  createWhatsAppModal() {
-    const modalHTML = `
-    <div id="whatsappModal" class="modal">
-      <div class="modal-content" style="padding: 1rem 1rem; text-align: center; position: relative;">
-        <span class="close" style="font-size: 2rem; position: middle; top: 0.5rem; right: 1rem; cursor: pointer; z-index: 10;" aria-label="Close WhatsApp share modal">&times;</span>
-        <h2 data-translate="shareBiodataWhatsappTitle" class="font-noto-override" style="margin: 2rem 0 2rem 0; font-weight: 600; font-size: 1.5rem;"></h2>
-        <img id="whatsappLogoBtn" src="assets/images/whatsapplogo.png" alt="WhatsApp" width="90" height="90" loading="lazy" style="width: 90px; height: 90px; display: block; margin: 2rem auto 0 auto; cursor: pointer; transition: transform 0.2s;">
-      </div>
-    </div>
-  `;
 
-    document.body.insertAdjacentHTML("beforeend", modalHTML);
-
-    // WhatsApp logo click handler - opens WhatsApp with business number
-    const whatsappLogo = document.getElementById("whatsappLogoBtn");
-    whatsappLogo.addEventListener("click", () => {
-      this.openWhatsAppChat();
-    });
-
-    // Add hover effect
-    whatsappLogo.addEventListener("mouseenter", () => {
-      whatsappLogo.style.transform = "scale(1.1)";
-    });
-    whatsappLogo.addEventListener("mouseleave", () => {
-      whatsappLogo.style.transform = "scale(1)";
-    });
-
-    // Close modal functionality
-    const whatsappModal = document.getElementById("whatsappModal");
-    const closeBtn = whatsappModal.querySelector(".close");
-    closeBtn.addEventListener("click", () => this.hideWhatsAppModal());
-    whatsappModal.addEventListener("click", (e) => {
-      if (e.target === whatsappModal) {
-        this.hideWhatsAppModal();
-      }
-    });
-  }
 
   // Gender Selection Methods
   showGenderSelection() {
@@ -518,63 +474,7 @@ class BiodataManager {
     }, 1000);
   }
 
-  // WhatsApp Methods
-  showWhatsAppModal() {
-    const modal = document.getElementById("whatsappModal");
-    modal.classList.add("show");
-    // Update translations when modal opens
-    this.languageManager.updatePageTranslations();
-  }
 
-  hideWhatsAppModal() {
-    const modal = document.getElementById("whatsappModal");
-    modal.classList.remove("show");
-  }
-
-  // WhatsApp Chat Method
-  openWhatsAppChat() {
-    // Your WhatsApp business number
-    const businessNumber = "919270969478"; // Format: country code + number (no spaces, no +)
-
-    // Pre-filled message for users (optional - you can customize or remove)
-    const message = "नमस्कार, विवाह नोंदणीसाठी मी बायोडेटा पाठवत आहे.";
-
-    // Create WhatsApp URL
-    const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-
-    // Open WhatsApp in new tab
-    window.open(whatsappUrl, "_blank");
-
-    // Close the modal after opening WhatsApp
-    this.hideWhatsAppModal();
-  }
-
-  sendWhatsAppMessage() {
-    const phone = document.getElementById("whatsappPhone").value;
-    const message = document.getElementById("whatsappMessage").value;
-
-    if (!phone || phone.length !== 10) {
-      this.showError("Please enter a valid 10-digit phone number");
-      return;
-    }
-
-    // Format WhatsApp URL
-    const whatsappUrl = `https://wa.me/91${phone}?text=${encodeURIComponent(
-      message
-    )}`;
-
-    // Open WhatsApp
-    window.open(whatsappUrl, "_blank");
-
-    // Close modal
-    this.hideWhatsAppModal();
-
-    // Clear form
-    document.getElementById("whatsappPhone").value = "";
-    document.getElementById("whatsappMessage").value = "";
-  }
 
   // Utility Methods
   resetSelections() {

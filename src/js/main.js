@@ -28,16 +28,12 @@ class App {
       // Verify critical elements exist
       const langToggle = document.getElementById("langToggle");
       const createBtn = document.getElementById("createBiodataBtn");
-      const sendBtn = document.getElementById("sendBiodataBtn");
 
       if (!langToggle) {
         throw new Error("Language toggle button not found in DOM");
       }
       if (!createBtn) {
         throw new Error("Create biodata button not found in DOM");
-      }
-      if (!sendBtn) {
-        throw new Error("Send biodata button not found in DOM");
       }
       console.log("✅ All critical elements found in DOM");
 
